@@ -2,8 +2,8 @@ import { UrlWithParsedQuery, parse } from "url";
 import { IncomingMessage } from "http";
 
 
-export class Utils {
 
+export class Utils {
 
 
     // Dummy object test example
@@ -19,7 +19,12 @@ export class Utils {
         } else {
             return '';
         }
+    
     }
+
+    
+
+
 
     public static async getRequestBody(request: IncomingMessage): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -40,6 +45,13 @@ export class Utils {
         });
     }
 
+    
+    
+    
+    
+    
+    
+    
     //// aqui abaixo é o codigo da primeira versao do aprendizado
 
     public static parseUrl(url: string): UrlWithParsedQuery {
