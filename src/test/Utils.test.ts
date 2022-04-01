@@ -1,16 +1,17 @@
 import { Utils } from '../app/Utils';
+import { parse } from 'url';
 
-describe("Suite: Utils", () => {
- 
+describe("Suite Utils,", () => {
 
-    beforeAll(()=>{
 
-        console.log(`Before All`)
+    beforeAll(() => {
+
+        console.log(`Rode antes de todos os testes`);
     });
 
 
-    beforeEach(()=>{
-        console.log(`before Each`)
+    beforeEach(() => {
+        console.log(`Rode Antes de cada`)
     })
 
 
@@ -53,4 +54,48 @@ describe("Suite: Utils", () => {
 
     test.todo("Cenarios de perturbação")
 
-  })
+
+    test('DISTURBANCE: Test Invalid URL WITH NORMAL function', () => {
+
+        function expectError() {
+            Utils.parseUrl('');
+
+        }
+
+        expect(expectError).toThrowError();
+    })
+
+
+    test('DISTURBANCE: Test Invalid URL with ARROW function', ()=>{
+
+        expect(()=>{
+            Utils.parseUrl('');
+        }).toThrowError()
+
+
+    })
+
+    
+    test('Test with Try and Catch', ()=>{
+            
+            try{
+                Utils.parseUrl('');
+            }catch(error){
+                expect(error).toBeInstanceOf(Error);
+                expect(error).toHaveProperty('message', 'Invalid URL');
+                expect(error).toBeDefined();
+            }
+    })
+
+    // test('Testar Se True', () => {
+
+    //     function retorno() {
+    //         return Utils.compareIfTrue(true);
+            
+    //     }
+
+    //     expect(retorno()).toThrow();
+
+    // })
+
+})
